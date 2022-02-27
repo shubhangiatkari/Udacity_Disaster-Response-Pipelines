@@ -22,7 +22,8 @@ def load_data(messages_filepath, categories_filepath):
         # set each value to be the last character of the string
         categories[column] = categories[column].str[-1]
         # convert column from string to numeric
-        categories[column] = categories[column].astype(int)
+        categories[column] = pd.to_numeric(categories[column])
+        #categories[column] = categories[column].astype(int)
     categories.replace(2, 1, inplace=True)
     # drop the original categories column from `df`
     df.drop('categories', axis=1, inplace = True)
